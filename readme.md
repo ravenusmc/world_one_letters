@@ -1,6 +1,14 @@
 # World War One Letters
 ## Intro
 
+The goal of this project is to look at English World War One letters and do some
+sentiment analysis on them and see if anything can be determined by that analysis.
+
+As usual, I got the dataset from Kaggle: https://www.kaggle.com/anthaus/world-war-i-letters#letters.json
+
+I may also do something with this Kaggle dataset at a later time:
+https://www.kaggle.com/docsouth-data/first-person-narratives-of-the-american-south#fpn-ashby-ashby.txt
+Which deals with information from the American South. 
 
 
 # Getting started
