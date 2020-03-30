@@ -1,15 +1,17 @@
 <template>
   <div>
+    <Header/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Header from '@/components/generic/Header.vue'
 
 export default {
   name: 'Home',
   components: {
+    Header,
   }
 }
 </script>
