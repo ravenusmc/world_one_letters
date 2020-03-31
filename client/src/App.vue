@@ -9,7 +9,13 @@
 </template>
 
 <style>
+
+.center {
+  text-align: center;
+}
+
 .font {
   font-family: 'Assistant', sans-serif;
 }
+
 </style>
