@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header/>
+    <Nav />
 
     <!-- Header area -->
     <div class='about_header'>
@@ -60,13 +60,15 @@
 
 <script>
 // @ is an alias to /src
+import Nav from '@/components/generic/Nav.vue';
 import Header from '@/components/generic/Header.vue'
 import Footer from '@/components/generic/Footer.vue';
 
 export default {
   name: 'Home',
   components: {
-    Header,
+    // Header,
+    Nav,
     Footer,
   }
 }
