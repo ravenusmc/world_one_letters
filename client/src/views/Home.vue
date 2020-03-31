@@ -3,6 +3,7 @@
     <Header/>
     <Background />
     <ImageArea />
+    <Selection />
     <Footer/>
   </div>
 </template>
@@ -13,6 +14,7 @@ import Header from '@/components/generic/Header.vue';
 import Footer from '@/components/generic/Footer.vue';
 import Background from '@/components/home/Background.vue';
 import ImageArea from '@/components/home/ImageArea.vue';
+import Selection from '@/components/home/Selection.vue';
 
 export default {
   name: 'Home',
@@ -20,6 +22,7 @@ export default {
     Header,
     Background,
     ImageArea,
+    Selection,
     Footer,
   }
 }

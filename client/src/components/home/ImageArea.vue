@@ -31,7 +31,6 @@ export default {
   grid-gap: 1em;
   margin-left: 3%;
   margin-right: 3%;
-  margin-bottom: 50px;
   margin-top: 50px;
 }
 
@@ -39,6 +38,9 @@ export default {
   height: 400px;
   background-repeat: no-repeat;
   background-size: 100%;
+  border-radius: 15px;
+  /* max-width: 100%; */
+  /* height: auto; */
 }
 
 .imageOne {
