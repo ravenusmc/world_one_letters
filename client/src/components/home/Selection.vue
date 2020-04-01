@@ -9,7 +9,7 @@
         </div>
 
         <div class='font font_info'>
-          <h5>Explore</h5>
+          <h5><router-link class='font routerLinkFormatting' to="/explore">Explore</router-link></h5>
         </div>
 
       </div>
@@ -43,7 +43,7 @@ section {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 80px;
+  margin-bottom: 100px;
 }
 
 .divRectangle {
@@ -75,8 +75,18 @@ section {
 
 .font_info {
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 20px;
+  width: 120%;
   text-align: center;
+}
+
+.routerLinkFormatting {
+  color: #333;
+  text-decoration: none;
+}
+
+.routerLinkFormatting:hover {
+  border-bottom: 2px solid #333;
 }
 
 

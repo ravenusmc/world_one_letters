@@ -9,6 +9,7 @@
 
       <div class='linkDiv'>
         <router-link class='font routerLinkFormatting' to="/">Home</router-link> |
+        <router-link class='font routerLinkFormatting' to="/explore">Explore</router-link> |
         <router-link class='font routerLinkFormatting' to="/about">About</router-link>
       </div>
 
