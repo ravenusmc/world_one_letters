@@ -22,12 +22,28 @@ export default {
 
 <style scoped>
 
-header {
+/* header {
   background-image: url('../../assets/images/headerImage.jpg');
   height: 700px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.exploreHeader {
+  background-image: url('../../assets/images/exploreHeader.jpg');
+  height: 700px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+} */
+
+/* .blue-theme {
+  background-image: url('../../assets/images/exploreHeader.jpg');
+  height: 700px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+} */
 
 </style>

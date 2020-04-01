@@ -1,6 +1,7 @@
 <template>
   <div>
-    <Header/>
+    <Header
+      :class="homeTheme"/>
     <Background />
     <ImageArea />
     <Selection />
@@ -24,6 +25,23 @@ export default {
     ImageArea,
     Selection,
     Footer,
-  }
+  },
+  data() {
+    return {
+      homeTheme: 'home-theme',
+    }
+  },
 }
 </script>
+
+<style scoped>
+
+.home-theme {
+  background-image: url('../assets/images/headerImage.jpg');
+  height: 700px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+</style>
