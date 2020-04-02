@@ -39,8 +39,6 @@ export default {
   background-repeat: no-repeat;
   background-size: 100%;
   border-radius: 15px;
-  /* max-width: 100%; */
-  /* height: auto; */
 }
 
 .imageOne {
@@ -59,11 +57,18 @@ export default {
 @media only all and (max-width: 900px) {
 
   #pictureRegion {
-    display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 1em;
-    margin-left: 3%;
-    margin-right: 3%;
+    margin-bottom: 50px;
+  }
+
+  .imageSettings {
+    height: 500px;
+    background-size: cover;
+  }
+
+  .imageOne {
+    background-size: 100%;
+    height: 275px;
   }
 
 }

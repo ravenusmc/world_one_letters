@@ -89,5 +89,25 @@ section {
   border-bottom: 2px solid #333;
 }
 
+@media only all and (max-width: 900px) {
+
+  section {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+
+  .divRectangle {
+    display: grid;
+    grid-template-columns: 45% 45%;
+    border: 2px solid black;
+    border-radius: 15px;
+    width: 50%;
+    margin-bottom: 50px;
+  }
+
+}
+
 
 </style>

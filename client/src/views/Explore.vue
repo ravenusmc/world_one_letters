@@ -2,7 +2,6 @@
   <div>
     <Header
       :class="exploreTheme" />
-    EXPLORE
     <Footer />
   </div>
 </template>
@@ -29,10 +28,12 @@ export default {
 
 .explore-theme {
   background-image: url('../assets/images/exploreHeader.jpg');
-  height: 700px;
-  background-size: cover;
+  height: 800px;
+  width: 100%;
+  background-size: 100% 100%;
   background-position: center;
   background-repeat: no-repeat;
 }
+
 
 </style>
