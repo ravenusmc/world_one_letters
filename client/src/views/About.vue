@@ -1,6 +1,7 @@
 <template>
   <div>
-    <Nav />
+    <Header
+      :class="aboutTheme" />
 
     <!-- Header area -->
     <div class='about_header'>
@@ -67,10 +68,15 @@ import Footer from '@/components/generic/Footer.vue';
 export default {
   name: 'Home',
   components: {
-    // Header,
+    Header,
     Nav,
     Footer,
-  }
+  },
+  data() {
+    return {
+      aboutTheme: 'about-theme',
+    }
+  },
 }
 </script>
 
@@ -94,6 +100,14 @@ export default {
     margin-bottom: 50px;
     margin-left: 5%;
     margin-right: 5%;
+  }
+
+  .about-theme {
+    background-image: url('../assets/images/aboutImage.jpeg');
+    height: 700px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   /* Media Query area */
