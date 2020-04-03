@@ -2,18 +2,21 @@
   <div>
     <Header
       :class="exploreTheme" />
+    <Study/>
     <Footer />
   </div>
 </template>
 
 <script>
 import Header from '@/components/generic/Header.vue';
+import Study from '@/components/explore/Study.vue';
 import Footer from '@/components/generic/Footer.vue';
 
 export default {
   name: 'Explore',
   components: {
     Header,
+    Study,
     Footer,
   },
   data() {
