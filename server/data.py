@@ -9,9 +9,16 @@ from textblob import TextBlob
 class Data():
 
     def __init__(self):
-        self.data = pd.read_csv('./data/ks-projects-201801.csv')
-        self.data['deadline'] = pd.to_datetime(self.data['deadline'], infer_datetime_format=True)
+        self.index = pd.read_csv('./data/index.csv')
+        self.letters = pd.read_json('./data/letters.json')
+        #self.data['deadline'] = pd.to_datetime(self.data['deadline'], infer_datetime_format=True)
 
+
+    # My plan for the data analysis - I need to get the data broken out by two dates
+    # That the user enters.
+    # I need to ensure that the letters are only in English - this needs to be
+    # the first sort.
+    # Place is tied to to the places.csv that also has country in it 
 
     #This method will get the sentiment of the lines spoken by the four main characters
     #for each season. How this will work is that each line, by character, will get its sentiment
