@@ -18,7 +18,11 @@ class Data():
     # That the user enters.
     # I need to ensure that the letters are only in English - this needs to be
     # the first sort.
-    # Place is tied to to the places.csv that also has country in it 
+    # Place is tied to to the places.csv that also has country in it
+    # I may have to break each letter up by using the tokenization feature on
+    #Text blob
+    def get_sentiment_for_letters(self):
+        pass
 
     #This method will get the sentiment of the lines spoken by the four main characters
     #for each season. How this will work is that each line, by character, will get its sentiment
