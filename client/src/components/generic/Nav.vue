@@ -3,7 +3,7 @@
 
     <nav>
 
-      <div>
+      <div class='pageTitle'>
         <h3 class='font navTitle'>World War One Letters</h3>
       </div>
 
@@ -56,6 +56,27 @@ nav {
 
 .routerLinkFormatting:hover {
   border-bottom: 2px solid #333;
+}
+
+@media only all and (max-width: 900px) {
+
+  nav {
+    flex-direction: column;
+  }
+
+  .pageTitle {
+    text-align: center;
+  }
+
+  .linkDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+  }
+
+
 }
 
 </style>
