@@ -16,13 +16,14 @@ class Data():
         #self.data['deadline'] = pd.to_datetime(self.data['deadline'], infer_datetime_format=True)
 
     def data_idea_test(self):
+        pass
         # Works
         #data = json.load(open('./data/letters.json'))
         # print(type(data))
         # End works!!!
 
         #This will get the text in the series
-        print(self.letters.loc["na_uk_16"])
+        #print(self.letters.loc["na_uk_16"])
 
     # Place is tied to to the places.csv that also has country in it
     # I may have to break each letter up by using the tokenization feature on
@@ -52,10 +53,28 @@ class Data():
                     # This will pull the data from months that have more than one
                     # letter.
                     if len(month_data_set) > 1:
+                        monthly_sentiment = []
                         while count < len(month_data_set):
-                            print(month_data_set.iat[count,0])
-                            input()
+                            # Getting the index of the letter
+                            letter_index = month_data_set.iat[count,0]
+                            # Getting the text of the letter based on the index
+                            letter_text = self.letters.loc[letter_index]
+                            text_ready_for_analysis = TextBlob(letter_text)
+                            total = 0
+                            average_counter = 0
+                            for sentence in text_ready_for_analysis.sentences:
+                                total = sentence.sentiment[0] + total
+                                average_counter += 1
+                                average_sentiment =  total / average_counter
+                                average_sentiment_formatted = float(format(average_sentiment, '.5f'))
+                                monthly_sentiment.append(average_sentiment_formatted)
                             count += 1
+                        total_avg_monthly_sentiment = sum(monthly_sentiment)/len(monthly_sentiment)
+                        total_avg_monthly_sentiment_formatted = float(format(total_avg_monthly_sentiment, '.5f'))
+                        date = datetime.datetime(year, month, 1)
+                        rows.append(date)
+                        rows.append(total_avg_monthly_sentiment_formatted)
+                        sentiment_data.append(rows)
                     else:
                         # Getting the index of the letter
                         letter_index = month_data_set.iat[0,0]
@@ -68,28 +87,13 @@ class Data():
                             total = sentence.sentiment[0] + total
                             average_counter += 1
                         average_sentiment =  total / average_counter
-                        average_sentiment = float(format(average_sentiment, '.5f'))
+                        average_sentiment_formatted = float(format(average_sentiment, '.5f'))
                         date = datetime.datetime(year, month, 1)
                         rows.append(date)
-                        rows.append(average_sentiment)
+                        rows.append(average_sentiment_formatted)
                         sentiment_data.append(rows)
-                        
-                        # print(valance.sentiment[0])
-                    # print(len(month_data_set))
-                    # print(month_data_set.iat[0,0])
-
-# na_uk_19
-#
-# na_uk_14
-# na_uk_20
-# na_uk_21
-# na_uk_29
-
-                    # print(month_data_set['letter_key'].iloc[1])
-                    # print(month_data_set.iat[0,0])
-                    # input()
-        # print(data_set_english_only['year'].min()) # 1914.0
-        # print(data_set_english_only['year'].max()) # 1917.0
+        print(sentiment_data)
+        return sentiment_data
 
     #This method will get the sentiment of the lines spoken by the four main characters
     #for each season. How this will work is that each line, by character, will get its sentiment
