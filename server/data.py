@@ -28,19 +28,66 @@ class Data():
     # I may have to break each letter up by using the tokenization feature on
     #Text blob
     def get_sentiment_for_letters(self):
+        sentiment_data = []
+        columns = ['Date', 'Sentiment']
+        sentiment_data.append(columns)
         # Getting the letters in the data set that are only in Engish
         data_set_english_only = self.index[(self.index.language == 'english')]
         years = [1914, 1915, 1916, 1917]
         months = [1,2,3,4,5,6,7,8,9,10,11,12]
         for year in years:
+            rows = []
             #resetting the data set for each loop
             data_set_english_only_loop = data_set_english_only
             year_data_set = data_set_english_only_loop[(data_set_english_only_loop.year == year)]
             for month in months:
                 #resetting the dataset for each loop
                 year_data_set_loop = year_data_set
+                #Looping through the loop based on the month.
                 month_data_set = year_data_set_loop[(year_data_set_loop.month == month)]
-                print(month)
+                # if the dataset has data, during the month then we enter this
+                #conditional statement
+                if not month_data_set.empty:
+                    count = 0
+                    # This will pull the data from months that have more than one
+                    # letter.
+                    if len(month_data_set) > 1:
+                        while count < len(month_data_set):
+                            print(month_data_set.iat[count,0])
+                            input()
+                            count += 1
+                    else:
+                        # Getting the index of the letter
+                        letter_index = month_data_set.iat[0,0]
+                        # Getting the text of the letter based on the index
+                        letter_text = self.letters.loc[letter_index]
+                        text_ready_for_analysis = TextBlob(letter_text)
+                        total = 0
+                        average_counter = 0
+                        for sentence in text_ready_for_analysis.sentences:
+                            total = sentence.sentiment[0] + total
+                            average_counter += 1
+                        average_sentiment =  total / average_counter
+                        average_sentiment = float(format(average_sentiment, '.5f'))
+                        date = datetime.datetime(year, month, 1)
+                        rows.append(date)
+                        rows.append(average_sentiment)
+                        sentiment_data.append(rows)
+                        
+                        # print(valance.sentiment[0])
+                    # print(len(month_data_set))
+                    # print(month_data_set.iat[0,0])
+
+# na_uk_19
+#
+# na_uk_14
+# na_uk_20
+# na_uk_21
+# na_uk_29
+
+                    # print(month_data_set['letter_key'].iloc[1])
+                    # print(month_data_set.iat[0,0])
+                    # input()
         # print(data_set_english_only['year'].min()) # 1914.0
         # print(data_set_english_only['year'].max()) # 1917.0
 
