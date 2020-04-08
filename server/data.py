@@ -63,11 +63,8 @@ class Data():
                             total = 0
                             average_counter = 0
                             for sentence in text_ready_for_analysis.sentences:
-                                total = sentence.sentiment[0] + total
-                                average_counter += 1
-                                average_sentiment =  total / average_counter
-                                average_sentiment_formatted = float(format(average_sentiment, '.5f'))
-                                monthly_sentiment.append(average_sentiment_formatted)
+                                sentence_sentiment = sentence.sentiment[0]
+                                monthly_sentiment.append(sentence_sentiment)
                             count += 1
                         average_sentiment = sum(monthly_sentiment)/len(monthly_sentiment)
                         average_sentiment_formatted = float(format(average_sentiment, '.5f'))
@@ -89,6 +86,7 @@ class Data():
                     rows.append(date_formatted)
                     rows.append(average_sentiment_formatted)
                     sentiment_data.append(rows)
+                    print(sentiment_data)
         return sentiment_data
 
     #This method will get the sentiment of the lines spoken by the four main characters

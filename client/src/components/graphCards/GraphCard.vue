@@ -1,16 +1,22 @@
 <template>
   <div>
     <GChart
-      :type="typeOne"
+      :type="type"
       :data="data"
-      :options="options"/>
+      :options="options"
+      :resizeDebounce="100" />
   </div>
 </template>
 
 <script>
+import { GChart } from 'vue-google-charts'
+
 export default {
   name: 'GraphCard',
-  props: ['typeOne', 'data', 'options'],
+  components: {
+    GChart
+  },
+  props: ['type', 'data', 'options'],
 };
 </script>
 
