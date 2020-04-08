@@ -69,12 +69,8 @@ class Data():
                                 average_sentiment_formatted = float(format(average_sentiment, '.5f'))
                                 monthly_sentiment.append(average_sentiment_formatted)
                             count += 1
-                        total_avg_monthly_sentiment = sum(monthly_sentiment)/len(monthly_sentiment)
-                        total_avg_monthly_sentiment_formatted = float(format(total_avg_monthly_sentiment, '.5f'))
-                        date = datetime.datetime(year, month, 1)
-                        rows.append(date)
-                        rows.append(total_avg_monthly_sentiment_formatted)
-                        sentiment_data.append(rows)
+                        average_sentiment = sum(monthly_sentiment)/len(monthly_sentiment)
+                        average_sentiment_formatted = float(format(average_sentiment, '.5f'))
                     else:
                         # Getting the index of the letter
                         letter_index = month_data_set.iat[0,0]
@@ -88,11 +84,11 @@ class Data():
                             average_counter += 1
                         average_sentiment =  total / average_counter
                         average_sentiment_formatted = float(format(average_sentiment, '.5f'))
-                        date = datetime.datetime(year, month, 1)
-                        rows.append(date)
-                        rows.append(average_sentiment_formatted)
-                        sentiment_data.append(rows)
-        print(sentiment_data)
+                    date = datetime.datetime(year, month, 1)
+                    date_formatted = date.strftime("%b %Y")
+                    rows.append(date_formatted)
+                    rows.append(average_sentiment_formatted)
+                    sentiment_data.append(rows)
         return sentiment_data
 
     #This method will get the sentiment of the lines spoken by the four main characters
