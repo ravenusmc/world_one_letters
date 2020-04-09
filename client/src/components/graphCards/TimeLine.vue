@@ -1,5 +1,12 @@
 <template>
   <div id="app">
+
+    <form @submit="submitForm">
+      <button>Submit</button>
+    </form>
+
+    <h1>1914</h1>
+    
     <GChart
       :settings="{ packages: ['timeline'] }"
       type="Timeline"
@@ -7,11 +14,14 @@
       :options="chartOptions"
       :events="chartEvents"
       ref="gChart"
+      :resizeDebounce="100"
     />
   </div>
 </template>
 <script>
 import { GChart } from "vue-google-charts";
+import { mapGetters } from 'vuex';
+
 export default {
   name: "TimeLine",
   components: {
@@ -34,9 +44,6 @@ export default {
 
       ],
       chartOptions: {
-        chart: {
-          title: "Company Performance",
-        },
         width: 800,
         height: 500,
       },
@@ -49,6 +56,19 @@ export default {
         }
       }
     };
-  }
+  }, // End Data Area
+  computed: {
+    ...mapGetters([
+      'battleTimeLine1914',
+    ]),
+  }, // End Computed Area
+  methods: {
+    submitForm(evt) {
+      evt.preventDefault();
+      console.log('HDJJD')
+      this.chartData = this.battleTimeLine1914
+      // this.fetchMapData({ payload });
+    },
+  },// End Methods
 };
 </script>

@@ -26,14 +26,20 @@ export default new Vuex.Store({
     ['Apr 1917', 0.16397],
     ['Dec 1917', 0.06988],
     ],
-    battleTimeLine: [['Battle', 'Date']
-    ['Battle of Le Cateau', new Date(1789, 3, 30), new Date(1797, 2, 4)]
-    ]
+    battleTimeLine1914:[
+    [
+      { type: "string", label: "Battle", id: "Battlee" },
+      { type: "date", label: "From", id: "From" },
+      { type: "date", label: "To", id: "To" }
+    ],
+    ['Battle of Le Cateau', new Date(1914, 7, 26), new Date(1914, 7, 27)],
+    ['First Battle of the Marne', new Date(1914, 8, 6), new Date(1914, 8, 12)],
+    ],
   },
 
   getters: {
     sentimentData: state => state.sentimentData,
-    battleTimeLine: state => state.battleTimeLine,
+    battleTimeLine1914: state => state.battleTimeLine1914,
   },
 
   actions: {

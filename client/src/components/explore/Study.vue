@@ -1,17 +1,20 @@
 <template>
   <div>
-    <h1>The Study</h1>
-    <TimeLine />
-    <!-- <GraphCard
-      :type='TimeLine'
-      :data='battleTimeLine'
-      :options='chartOptionsOne'>
-    </GraphCard> -->
+
+    <div class='center'>
+      <h1 class='font'>The Study</h1>
+    </div>
+
+    <section>
+      <TimeLine />
+    </section>
+
     <GraphCard
       :type='LineChart'
       :data='sentimentData'
       :options='chartOptionsOne'>
     </GraphCard>
+
   </div>
 </template>
 
@@ -44,13 +47,20 @@ export default {
     }
   },// End Data area
   computed: {
-  ...mapGetters([
-    'sentimentData',
-    'battleTimeLine',
-  ]),
-},
+    ...mapGetters([
+      'sentimentData',
+      'battleTimeLine',
+    ]),
+  },
 }
 </script>
 
 <style scoped>
+section {
+  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 </style>
