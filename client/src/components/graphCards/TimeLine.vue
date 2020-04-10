@@ -1,12 +1,22 @@
 <template>
   <div id="app">
 
-    <form @submit="submitForm">
-      <button>Submit</button>
+    <h1 class='center font'>Year: {{ this.year }}</h1>
+
+    <form>
+
+      <section>
+        <h2 class='font'>Change Year:</h2>
+        <div class='upArrow'>
+          <i v-on:click="increaseYear()" class="fa fa-arrow-circle-up fa-3x" ></i>
+        </div>
+        <div>
+          <i v-on:click="decreaseYear()" class="fa fa-arrow-circle-down fa-3x"></i>
+        </div>
+      </section>
+
     </form>
 
-    <h1>1914</h1>
-    
     <GChart
       :settings="{ packages: ['timeline'] }"
       type="Timeline"
@@ -29,23 +39,15 @@ export default {
   },
   data() {
     return {
-      // Array will be automatically processed with visualization.arrayToDataTable function
-      chartData: [
-        [
-          { type: "string", label: "Battle", id: "Battlee" },
-          { type: "date", label: "From", id: "From" },
-          { type: "date", label: "To", id: "To" }
-        ],
-        ['Battle of Le Cateau', new Date(1914, 7, 26), new Date(1914, 7, 27)],
-        ['First Battle of the Marne', new Date(1914, 8, 6), new Date(1914, 8, 12)],
-        ['First Battle of Champagne', new Date(1914, 11, 20), new Date(1915, 2, 17)],
-        ['Second Battle of Ypres', new Date(1915, 3, 22), new Date(1915, 4, 25)],
-        ['Second Battle of Artois', new Date(1915, 4, 9), new Date(1915, 5, 18)],
-
-      ],
+      year: 1914,
+      chartData: [],
       chartOptions: {
         width: 800,
-        height: 500,
+        height: 300,
+        animation:{
+          duration: 1000,
+          easing: 'linear',
+        },
       },
       chartEvents: {
         select: () => {
@@ -60,15 +62,68 @@ export default {
   computed: {
     ...mapGetters([
       'battleTimeLine1914',
+      'battleTimeLine1915',
+      'battleTimeLine1916',
+      'battleTimeLine1917',
+      'battleTimeLine1918',
     ]),
   }, // End Computed Area
   methods: {
-    submitForm(evt) {
-      evt.preventDefault();
-      console.log('HDJJD')
-      this.chartData = this.battleTimeLine1914
-      // this.fetchMapData({ payload });
-    },
+    increaseYear() {
+
+      if (this.year >= 1918) {
+        alert('Must stay between 1914 and 1918')
+      }else {
+        this.year += 1
+        if (this.year == 1914){
+          this.chartData = this.battleTimeLine1914
+        }else if (this.year == 1915){
+          this.chartData = this.battleTimeLine1915
+        }else if (this.year == 1916){
+          this.chartData = this.battleTimeLine1916
+        }else if (this.year == 1917){
+          this.chartData = this.battleTimeLine1917
+        }else if (this.year == 1918){
+          this.chartData = this.battleTimeLine1918
+        }
+      }
+    }, // End Increase year
+    decreaseYear() {
+      if (this.year <= 1914) {
+        alert('Must stay between 1914 and 1918')
+      }else {
+        this.year -= 1
+        if (this.year == 1914){
+          this.chartData = this.battleTimeLine1914
+        }else if (this.year == 1915){
+          this.chartData = this.battleTimeLine1915
+        }else if (this.year == 1916){
+          this.chartData = this.battleTimeLine1916
+        }else if (this.year == 1917){
+          this.chartData = this.battleTimeLine1917
+        }else if (this.year == 1918){
+          this.chartData = this.battleTimeLine1918
+        }
+      }
+    },// End Decrease year
   },// End Methods
+  mounted: function(){
+    this.chartData = this.battleTimeLine1914
+  }
 };
 </script>
+
+<style scoped>
+section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* margin-bottom: 25px; */
+}
+
+.upArrow {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+</style>

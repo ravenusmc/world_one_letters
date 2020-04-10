@@ -57,7 +57,6 @@ export default {
 
 <style scoped>
 section {
-  border: 2px solid red;
   display: flex;
   flex-direction: column;
   justify-content: center;
