@@ -7,6 +7,15 @@
           <div class="modal-container">
             <h1>{{ modalTitle }}</h1>
 
+            <div>
+              <GraphCard
+                :type='Table'
+                :data='sentimentData'
+                :options='chartOptionsOne'>
+              </GraphCard>
+            </div>
+
+            <!-- Modal Footer area -->
             <div class="modal-footer">
               <slot name="footer">
                 default footer
@@ -15,6 +24,7 @@
                 </button>
               </slot>
             </div>
+            <!-- End Modal Footer area -->
 
           </div>
         </div>
@@ -33,16 +43,19 @@
 
 <script>
 import { GChart } from 'vue-google-charts'
-import { mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
+import GraphCard from '@/components/graphCards/GraphCard.vue';
 
 export default {
   name: 'GraphCard',
   components: {
-    GChart
+    GChart,
+    GraphCard,
   },
   props: ['type', 'data', 'options'],
   data(){
     return {
+      Table: 'Table',
       showModal: false,
       modalTitle: 'Drill Down Data for ',
       chartEvents: {
@@ -68,6 +81,11 @@ export default {
       }, // End Chart Events
     }
   }, // End of data area
+  computed: {
+    ...mapGetters([
+      'sentimentData',
+    ]),
+  }, // End Computed Area
   methods: {
     ...mapActions([
       'fetchDrillDownData',
