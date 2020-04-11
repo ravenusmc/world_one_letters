@@ -9,6 +9,10 @@ Vue.config.productionTip = false
 // Google charts plugin
 Vue.use(VueGoogleCharts);
 
+// MaterialDashboard plugin
+// import MaterialDashboard from './material-dashboard'
+// Vue.use(MaterialDashboard)
+
 new Vue({
   router,
   store,
