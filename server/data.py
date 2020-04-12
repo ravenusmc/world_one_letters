@@ -119,5 +119,5 @@ class Data():
             season_data.append(rows)
         return season_data
 
-data = Data()
-data.get_sentiment_for_letters()
+# data = Data()
+# data.get_sentiment_for_letters()

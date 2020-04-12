@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios';
 
 Vue.use(Vuex)
 
@@ -98,11 +99,13 @@ export default new Vuex.Store({
     // This action will get the data for the drill down
     fetchDrillDownData: ({ commit }, { payload }) => {
       console.log({ payload })
-      // const path = 'http://localhost:5000/fetchMapData';
-      // axios.post(path, payload)
-      //   .then((res) => {
-      //     commit('setMapData', res.data);
-      //   });
+      console.log('HERE')
+      const path = 'http://localhost:5000/fetchDrillDownData';
+      axios.post(path, payload)
+        .then((res) => {
+          console.log(res.data)
+          // commit('setMapData', res.data);
+        });
     },
 
   },
