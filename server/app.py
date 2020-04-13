@@ -42,8 +42,8 @@ def routeTwo():
         date = post_data['date']
         month_as_digit = support.convert_stringDate_to_numberDate(date)
         year = support.get_year(date)
-        data.get_data_for_drilldown(month_as_digit, year)
-        return jsonify('HI')
+        drilldown_data = data.get_data_for_drilldown(month_as_digit, year)
+        return jsonify(drilldown_data)
 
 if __name__ == '__main__':
     app.run()

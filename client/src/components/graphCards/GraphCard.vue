@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-on-clickaway="away">
 
     <section id='modalArea' v-if="showModal">
       <div class="modal-mask">
@@ -10,8 +10,8 @@
             <div>
               <GraphCard
                 :type='Table'
-                :data='sentimentData'
-                :options='chartOptionsOne'>
+                :data='drillDownData'
+                :options='chartOptionsDrillDown'>
               </GraphCard>
             </div>
 
@@ -42,11 +42,13 @@
 </template>
 
 <script>
+import { mixin as clickaway } from 'vue-clickaway';
 import { GChart } from 'vue-google-charts'
 import { mapGetters, mapActions } from 'vuex';
 import GraphCard from '@/components/graphCards/GraphCard.vue';
 
 export default {
+  mixins: [ clickaway ],
   name: 'GraphCard',
   components: {
     GChart,
@@ -58,8 +60,13 @@ export default {
       Table: 'Table',
       showModal: false,
       modalTitle: 'Drill Down Data for ',
+      chartOptionsDrillDown: {
+          title: 'Sentiment During World War 1',
+          legend: { position: 'top' },
+      }, // End Chart One Options
       chartEvents: {
         'select': () => {
+          this.modalTitle = 'Drill Down Data for '
           // console.log(this.data) // This will show you the data
           const chart = this.$refs.gChart.chartObject;
           const selection = chart.getSelection()[0];
@@ -84,6 +91,7 @@ export default {
   computed: {
     ...mapGetters([
       'sentimentData',
+      'drillDownData',
     ]),
   }, // End Computed Area
   methods: {
@@ -92,7 +100,10 @@ export default {
     ]),
     closeModal() {
       this.showModal = false
-    }
+    },
+    away: function() {
+      console.log('clicked away');
+    },
   }, // End of Methods
 };
 </script>

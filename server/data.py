@@ -89,10 +89,36 @@ class Data():
                     print(sentiment_data)
         return sentiment_data
 
-    #This method will get the data for the drill down. 
+    #This method will get the data for the drill down.
     def get_data_for_drilldown(self, month_as_digit, year):
-        print(month_as_digit)
-        print(year)
+        drilldown_data = []
+        columns = ['Letter Key', 'Author', 'Place']
+        drilldown_data.append(columns)
+        # Getting the letters in the data set that are only in Engish
+        data_set_english_only = self.index[(self.index.language == 'english')]
+        date_dataset = data_set_english_only[(data_set_english_only.year == year) & (data_set_english_only.month == month_as_digit)]
+        if len(date_dataset) == 1:
+            Letter_key = date_dataset['letter_key'].iloc[0]
+            Author = date_dataset['author'].iloc[0]
+            Place = date_dataset['place'].iloc[0]
+            rows.append(Letter_key)
+            rows.append(Author)
+            rows.append(Place)
+            drilldown_data.append(rows)
+        else:
+            count = 0
+            while count < len(date_dataset):
+                rows = []
+                Letter_key = date_dataset.iat[count, 0]
+                Author = date_dataset.iat[count, 1]
+                Place = date_dataset.iat[count, 5]
+                rows.append(Letter_key)
+                rows.append(Author)
+                rows.append(Place)
+                drilldown_data.append(rows)
+                count += 1
+        return drilldown_data
+
 
 # data = Data()
 # data.get_sentiment_for_letters()

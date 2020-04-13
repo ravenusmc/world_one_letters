@@ -25,4 +25,4 @@ class Support():
     def get_year(self, date):
         # print(date) # Nov 1915
         # print(date[4:8])
-        return date[4:8]
+        return int(date[4:8])

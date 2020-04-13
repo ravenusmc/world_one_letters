@@ -83,6 +83,7 @@ export default new Vuex.Store({
       ['Battles of Chateau Thierry and Belleau Wood', new Date(1918, 5, 3), new Date(1918, 5, 26)],
       ['Second Battle of the Marne', new Date(1918, 6, 15), new Date(1918, 7, 5)],
     ],
+    drillDownData: [],
   },
 
   getters: {
@@ -92,24 +93,28 @@ export default new Vuex.Store({
     battleTimeLine1916: state => state.battleTimeLine1916,
     battleTimeLine1917: state => state.battleTimeLine1917,
     battleTimeLine1918: state => state.battleTimeLine1918,
+    drillDownData: state => state.drillDownData,
   },
 
   actions: {
 
     // This action will get the data for the drill down
     fetchDrillDownData: ({ commit }, { payload }) => {
-      console.log({ payload })
-      console.log('HERE')
       const path = 'http://localhost:5000/fetchDrillDownData';
       axios.post(path, payload)
         .then((res) => {
-          console.log(res.data)
-          // commit('setMapData', res.data);
+          commit('setDrillDownData', res.data);
         });
     },
 
   },
 
   mutations: {
+
+    setDrillDownData(state, data){
+      state.drillDownData = data;
+    },
+
   },
+
 })
