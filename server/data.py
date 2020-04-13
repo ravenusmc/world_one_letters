@@ -89,35 +89,10 @@ class Data():
                     print(sentiment_data)
         return sentiment_data
 
-    #This method will get the sentiment of the lines spoken by the four main characters
-    #for each season. How this will work is that each line, by character, will get its sentiment
-    #and then an average will be found.
-    def sentimentByCharacter(self, season):
-        #Here I get a smaller data set based on where the season is set to
-        #what the user wants.
-        season_data_set = self.data[(self.data.Season == season)]
-        season_data = []
-        #This list will hold the main characters that will be examined
-        characters = ['Carrie', 'Miranda', 'Charlotte', 'Samantha']
-        columns = ['Character', 'Lines']
-        season_data.append(columns)
-        #looping through the characters list
-        for character in characters:
-            rows = []
-            #resetting the dataset each time we loop through the data.
-            character_data_set = season_data_set
-            speaker_data_set = character_data_set[(character_data_set.Speaker == character)]
-            valance_list = []
-            for line in speaker_data_set['Line']:
-                valance = TextBlob(line)
-                valance_list.append(valance.sentiment[0])
-            list_total = sum(valance_list)
-            average = list_total / len(valance_list)
-            average = format(average, '.5f')
-            rows.append(character)
-            rows.append(float(average))
-            season_data.append(rows)
-        return season_data
+    #This method will get the data for the drill down. 
+    def get_data_for_drilldown(self, month_as_digit, year):
+        print(month_as_digit)
+        print(year)
 
 # data = Data()
 # data.get_sentiment_for_letters()

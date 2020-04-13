@@ -4,6 +4,7 @@ from flask_cors import CORS
 
 #importing code that I wrote
 from data import *
+from support import *
 
 # configuration
 DEBUG = True
@@ -36,8 +37,12 @@ def routeOne():
 def routeTwo():
     if request.method == 'POST':
         data = Data()
+        support = Support()
         post_data = request.get_json()
-        print(post_data)
+        date = post_data['date']
+        month_as_digit = support.convert_stringDate_to_numberDate(date)
+        year = support.get_year(date)
+        data.get_data_for_drilldown(month_as_digit, year)
         return jsonify('HI')
 
 if __name__ == '__main__':
