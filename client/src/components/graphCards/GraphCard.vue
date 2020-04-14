@@ -4,7 +4,7 @@
     <section id='modalArea' v-if="showModal">
       <div class="modal-mask">
         <div class="modal-wrapper">
-          <div class="modal-container">
+          <div class="font center modal-container">
             <h1>{{ modalTitle }}</h1>
 
             <div>
@@ -18,9 +18,8 @@
             <!-- Modal Footer area -->
             <div class="modal-footer">
               <slot name="footer">
-                default footer
-                <button class="modal-default-button" @click="closeModal()">
-                  OK
+                <button class="font modal-default-button" @click="closeModal()">
+                  Close
                 </button>
               </slot>
             </div>
@@ -142,6 +141,22 @@ export default {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
   font-family: Helvetica, Arial, sans-serif;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+button {
+  padding: 12px;
+  background-color: #333;
+  color: white;
+  border: 2px solid #333;
+  border-radius: 12px;
+  text-transform: uppercase;
 }
 
 </style>
