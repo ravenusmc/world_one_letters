@@ -1,10 +1,11 @@
 <template>
   <div>
 
-    <Modal
-      :showModal="showModal"
-      :modalTitle="modalTitle"
-    />
+      <Modal
+        :showModal="showModal"
+        :modalTitle="modalTitle"
+        @update-number="update"
+      />
 
     <GChart
       :type="type"
@@ -73,9 +74,12 @@ export default {
     ...mapActions([
       'fetchDrillDownData',
     ]),
-    closeModal() {
-      this.showModal = false
-    },
+    // closeModal() {
+    //   this.showModal = false
+    // },
+    update(number) {
+      this.showModal = number;
+    }
     // away: function() {
     //   // this.showModal = false
     //   console.log(this.showModal)

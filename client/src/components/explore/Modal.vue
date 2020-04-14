@@ -45,6 +45,7 @@ export default {
   },
   data(){
     return {
+      // modalClose: this.showModal,
       Table: 'Table',
       chartOptionsDrillDown: {
           title: 'Sentiment During World War 1',
@@ -60,10 +61,12 @@ export default {
   }, // End Computed Area
   methods: {
     closeModal() {
-      this.showModal = false
+      let modalClose = this.showModal;
+      modalClose = false
+      this.$emit("update-number", modalClose);
     },
+    // This method is for use on vue click away
     away: function() {
-      // this.showModal = false
       console.log(this.showModal)
       console.log('clicked away');
     },
