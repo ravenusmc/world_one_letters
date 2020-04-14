@@ -49,6 +49,7 @@ export default {
       chartOptionsDrillDown: {
           title: 'Sentiment During World War 1',
           legend: { position: 'top' },
+          alternatingRowStyle: true,
       }, // End Chart One Options
     }
   },

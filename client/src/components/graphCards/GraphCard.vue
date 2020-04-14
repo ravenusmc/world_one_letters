@@ -17,14 +17,12 @@
 </template>
 
 <script>
-import { mixin as clickaway } from 'vue-clickaway';
 import { GChart } from 'vue-google-charts'
 import { mapGetters, mapActions } from 'vuex';
 import GraphCard from '@/components/graphCards/GraphCard.vue';
 import Modal from '@/components/explore/Modal.vue';
 
 export default {
-  mixins: [ clickaway ],
   name: 'GraphCard',
   components: {
     GChart,
@@ -78,11 +76,11 @@ export default {
     closeModal() {
       this.showModal = false
     },
-    away: function() {
-      // this.showModal = false
-      console.log(this.showModal)
-      console.log('clicked away');
-    },
+    // away: function() {
+    //   // this.showModal = false
+    //   console.log(this.showModal)
+    //   console.log('clicked away');
+    // },
   }, // End of Methods
 };
 </script>

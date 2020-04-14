@@ -98,6 +98,7 @@ class Data():
         data_set_english_only = self.index[(self.index.language == 'english')]
         date_dataset = data_set_english_only[(data_set_english_only.year == year) & (data_set_english_only.month == month_as_digit)]
         if len(date_dataset) == 1:
+            rows = []
             Letter_key = date_dataset['letter_key'].iloc[0]
             Author = date_dataset['author'].iloc[0]
             Place = date_dataset['place'].iloc[0]
