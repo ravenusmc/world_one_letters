@@ -84,6 +84,7 @@ export default new Vuex.Store({
       ['Second Battle of the Marne', new Date(1918, 6, 15), new Date(1918, 7, 5)],
     ],
     drillDownData: [],
+    letterDrillDownData: '',
   },
 
   getters: {
@@ -94,6 +95,7 @@ export default new Vuex.Store({
     battleTimeLine1917: state => state.battleTimeLine1917,
     battleTimeLine1918: state => state.battleTimeLine1918,
     drillDownData: state => state.drillDownData,
+    letterDrillDownData: state => state.letterDrillDownData,
   },
 
   actions: {
@@ -112,7 +114,8 @@ export default new Vuex.Store({
       const path = 'http://localhost:5000/fetchDrillDownLetterData';
       axios.post(path, payload)
         .then((res) => {
-          // commit('setDrillDownData', res.data);
+          console.log(res.data)
+          commit('setLetterDrillDownData', res.data);
         });
     }
 
@@ -120,9 +123,13 @@ export default new Vuex.Store({
 
   mutations: {
 
-    setDrillDownData(state, data){
+    setDrillDownData(state, data) {
       state.drillDownData = data;
     },
+
+    setLetterDrillDownData(state, data) {
+      state.letterDrillDownData = data;
+    }
 
   },
 

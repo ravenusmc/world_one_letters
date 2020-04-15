@@ -9,14 +9,7 @@
 
             <!-- Modal Body area -->
             <div>
-              <h1>chart</h1>
-              <!-- <GChart
-                :type="Table"
-                :data="drillDownData"
-                :options="chartOptionsDrillDown"
-                :events="chartEvents"
-                ref="gChart"
-                /> -->
+              <p>{{ letterDrillDownData }}</p>
             </div>
             <!-- End Modal Body area -->
 
@@ -59,7 +52,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'drillDownData',
+      'letterDrillDownData',
     ]),
   }, // End Computed Area
   methods: {

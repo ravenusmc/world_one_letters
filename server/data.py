@@ -120,6 +120,11 @@ class Data():
                 count += 1
         return drilldown_data
 
+    #This method will get the letter text based off an index for the second drilldown
+    def get_letter_text(self, index):
+        letter_text = self.letters.loc[index]
+        return letter_text
+
 
 # data = Data()
 # data.get_sentiment_for_letters()
