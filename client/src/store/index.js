@@ -107,6 +107,15 @@ export default new Vuex.Store({
         });
     },
 
+    // This action will get the data for the letter drilldown (2nd drill down)
+    fetchDrillDownLetterData: ({ commit }, { payload }) => {
+      const path = 'http://localhost:5000/fetchDrillDownLetterData';
+      axios.post(path, payload)
+        .then((res) => {
+          // commit('setDrillDownData', res.data);
+        });
+    }
+
   },
 
   mutations: {

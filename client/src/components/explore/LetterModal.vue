@@ -1,27 +1,22 @@
 <template>
   <div>
 
-    <LetterModal
-      :showLetterModal="showLetterModal"
-      :letterDrillDownTitle="letterDrillDownTitle"
-      @update-modal="update"
-    />
-
-    <section v-on-clickaway="away" id='clickaway' v-if="showModal">
+    <section v-if="showLetterModal">
       <div class="modal-mask">
         <div class="modal-wrapper">
           <div class="font center modal-container">
-            <h1>{{ modalTitle }}</h1>
+            <h1>{{ letterDrillDownTitle }}</h1>
 
             <!-- Modal Body area -->
             <div>
-              <GChart
+              <h1>chart</h1>
+              <!-- <GChart
                 :type="Table"
                 :data="drillDownData"
                 :options="chartOptionsDrillDown"
                 :events="chartEvents"
                 ref="gChart"
-                />
+                /> -->
             </div>
             <!-- End Modal Body area -->
 
@@ -44,52 +39,22 @@
 </template>
 
 <script>
-import { mixin as clickaway } from 'vue-clickaway';
-import { mapGetters, mapActions } from 'vuex';
-import { GChart } from 'vue-google-charts';
-import LetterModal from '@/components/explore/LetterModal.vue';
+import { mapGetters } from 'vuex';
+import { GChart } from 'vue-google-charts'
 
 export default {
-  name: "Modal",
-  mixins: [ clickaway ],
-  props: ['showModal', 'modalTitle'],
+  name: "LetterModal",
+  props: ['showLetterModal', 'letterDrillDownTitle'],
   components: {
     GChart,
-    LetterModal,
   },
   data(){
     return {
       // modalClose: this.showModal,
       Table: 'Table',
-      letterDrillDownTitle: 'Letter for ',
-      showLetterModal: false,
       chartOptionsDrillDown: {
           alternatingRowStyle: true,
       }, // End Chart One Options
-      chartEvents: {
-        'select': () => {
-          this.letterDrillDownTitle = 'Letter for ';
-          //console.log(this.drillDownData) // This will show you the data
-          const chart = this.$refs.gChart.chartObject;
-          const selection = chart.getSelection()[0];
-          // I need to add one to the row because the first row contains the
-          // column headers.
-          let row = selection.row + 1
-          let indexValue = this.drillDownData[row][0]
-          // This will open up the second drill down
-          this.showLetterModal = true;
-          // Closing the first drilldown for the second
-          let modalClose = this.showModal;
-          modalClose = false
-          this.$emit("update-number", modalClose);
-
-          const payload = {
-            indexValue,
-          };
-          this.fetchDrillDownLetterData({ payload })
-          this.letterDrillDownTitle = `${this.letterDrillDownTitle} ${indexValue}`
-        }
-      },
     }
   },
   computed: {
@@ -98,21 +63,10 @@ export default {
     ]),
   }, // End Computed Area
   methods: {
-    ...mapActions([
-      'fetchDrillDownLetterData',
-    ]),
     closeModal() {
-      let modalClose = this.showModal;
+      let modalClose = this.showLetterModal;
       modalClose = false
-      this.$emit("update-number", modalClose);
-    },
-    update(number) {
-      this.showLetterModal = number;
-    },
-    // This method is for use on vue click away
-    away: function() {
-      // console.log(this.showModal)
-      console.log('clicked away');
+      this.$emit("update-modal", modalClose);
     },
   }, // End Methods
 }
