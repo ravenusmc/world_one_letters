@@ -6,8 +6,13 @@ import store from './store'
 
 Vue.config.productionTip = false
 
+// Plugins
+import GlobalDirectives from './globalDirectives'
+
 // Google charts plugin
 Vue.use(VueGoogleCharts);
+// clickaway
+Vue.use(GlobalDirectives)
 
 // MaterialDashboard plugin
 // import MaterialDashboard from './material-dashboard'

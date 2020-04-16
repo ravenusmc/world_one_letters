@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-on-clickaway="away">
 
       <Modal
         :showModal="showModal"
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { mixin as clickaway } from 'vue-clickaway';
 import { GChart } from 'vue-google-charts'
 import { mapGetters, mapActions } from 'vuex';
 import GraphCard from '@/components/graphCards/GraphCard.vue';
@@ -25,6 +26,7 @@ import Modal from '@/components/explore/Modal.vue';
 
 export default {
   name: 'GraphCard',
+  mixins: [ clickaway ],
   components: {
     GChart,
     GraphCard,
@@ -79,12 +81,12 @@ export default {
     // },
     update(number) {
       this.showModal = number;
-    }
-    // away: function() {
-    //   // this.showModal = false
-    //   console.log(this.showModal)
-    //   console.log('clicked away');
-    // },
+    },
+    away: function() {
+      // this.showModal = false
+      console.log(this.showModal)
+      console.log('clicked away');
+    },
   }, // End of Methods
 };
 </script>

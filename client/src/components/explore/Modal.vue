@@ -7,7 +7,7 @@
       @update-modal="update"
     />
 
-    <section v-on-clickaway="away" id='clickaway' v-if="showModal">
+    <section id='clickaway' v-if="showModal">
       <div class="modal-mask">
         <div class="modal-wrapper">
           <div class="font center modal-container">

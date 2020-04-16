@@ -8,7 +8,7 @@
             <h1>{{ letterDrillDownTitle }}</h1>
 
             <!-- Modal Body area -->
-            <div>
+            <div class='letterArea'>
               <p>{{ letterDrillDownData }}</p>
             </div>
             <!-- End Modal Body area -->
@@ -98,6 +98,11 @@ export default {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
   font-family: Helvetica, Arial, sans-serif;
+}
+
+.letterArea {
+  height: 500px;
+  overflow: scroll;
 }
 
 .modal-footer {

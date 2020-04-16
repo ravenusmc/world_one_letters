@@ -37,12 +37,6 @@ export default {
         title: 'Sentiment During World War 1',
         legend: { position: 'top' },
         height: 500,
-        // vAxis: {
-        //   viewWindow: {
-        //     max: 0.5,
-        //     min: -0.5,
-        //   },
-        // },
       },// End Chart One Options
     }
   },// End Data area
@@ -56,10 +50,12 @@ export default {
 </script>
 
 <style scoped>
+
 section {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 </style>

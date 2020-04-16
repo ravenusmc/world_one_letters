@@ -53,6 +53,7 @@ def routeThree():
         data = Data()
         post_data = request.get_json()
         index = post_data['indexValue']
+        print(index)
         letter_text = data.get_letter_text(index)
         return jsonify(letter_text)
 
