@@ -8,7 +8,7 @@ As usual, I got the dataset from Kaggle: https://www.kaggle.com/anthaus/world-wa
 
 I may also do something with this Kaggle dataset at a later time:
 https://www.kaggle.com/docsouth-data/first-person-narratives-of-the-american-south#fpn-ashby-ashby.txt
-Which deals with information from the American South. 
+Which deals with information from the American South.
 
 
 # Getting started
@@ -41,4 +41,4 @@ as well as npm.
 
 # Preview
 
-To see a video that talks about this project please go here: COMING SOON
+To see a video that talks about this project please go here: https://youtu.be/wIx39S5ues0
