@@ -1,7 +1,8 @@
 <template>
   <div>
+    <!-- Start Footer Area -->
     <footer>
-      <div class='footer_fix'>
+      <div class='footer_fix' role="contentinfo">
         <h2 class='footerTitle font'>Copyright &copy; 2020 Double Sun Productions<br></h2>
           <div>
             <a href="https://www.linkedin.com/in/mcuddy1/"><i class="fa fa-linkedin-square fa-3x" aria-hidden="true"></i></a>
@@ -11,6 +12,7 @@
           </div>
       </div>
     </footer>
+    <!-- End Footer Area -->
   </div>
 </template>
 
